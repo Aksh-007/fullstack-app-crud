@@ -20,8 +20,8 @@ export const createUser = async (req, res) => {
 
         const newUser = await userModel.create({ name, email });
         res.status(201).json({
-            success:true,
-            message:`User Created Succesfully`,
+            success: true,
+            message: `User Created Succesfully`,
             newUser
         });
     }
@@ -32,21 +32,22 @@ export const createUser = async (req, res) => {
 };
 
 // here we are getting all users from database 
-export const getAllUsers = async (req, res) =>{
-        try {
-            const users = await userModel.find();
-            res.status(200).json({
-                success:true,
-                users,
-            })
-            
-        } catch (error) {
-            console.log(error.message);
-            res.status(400).json({
-                success:false,
-                message:error.message,
-            });
+export const getAllUsers = async (req, res) => {
+    try {
+        const users = await userModel.find();
+        res.status(200).json({
+            success: true,
+            users,
+        })
 
-        }
-}
+    } catch (error) {
+        console.log(error.message);
+        res.status(400).json({
+            success: false,
+            message: error.message,
+        });
+
+    }
+};
+
 
