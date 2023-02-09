@@ -1,9 +1,16 @@
 import React from "react";
 
 const Form = () => {
+
+  // every time we click submit it will refresh the page so prevent refreshing the page we are using function
+  const handleSubmit = (event) =>{
+      event.preventDefault();
+  }
+
   return (
     <div>
-      <form >
+      {/* so we are preventing form to refresh after submiting */}
+      <form onSubmit={handleSubmit}>
         <section className="text-gray-600 body-font relative">
           <div className="container px-5 py-8 mx-auto">
             <div className="flex flex-col text-center w-full mb-6">
