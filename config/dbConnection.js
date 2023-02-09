@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const dbConnection = async() =>{
-
     mongoose
     .connect(process.env.MONGO_URL)
     .then((conn) =>{
