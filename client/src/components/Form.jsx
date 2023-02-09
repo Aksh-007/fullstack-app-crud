@@ -17,6 +17,7 @@ const Form = () => {
       
     };
 
+    // here we are sending response to backend
     const res = await axios.post("/createUser", data);
     console.log(res);
   };
