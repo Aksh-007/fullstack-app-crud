@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 const Form = () => {
-  // every time we click submit it will refresh the page so prevent refreshing the page we are using function
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
+ 
   // we need some variable to store data of input field name and email so we are creating state
   const [userName, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,9 +14,18 @@ const Form = () => {
     const data = {
       name : userName,
       email : email,
+      
     };
 
     const res = await axios.post("/createUser", data);
+    console.log(res);
+  };
+
+   // every time we click submit it will refresh the page so prevent refreshing the page we are using function
+   const handleSubmit = (event) => {
+    event.preventDefault();
+    //to submit data
+    submitData();
   };
 
 
@@ -50,7 +55,9 @@ const Form = () => {
                       id="name"
                       name="name"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      value=""
+                      // sending the value of name to database
+                      value={userName}
+                      onChange={(event) => setUserName(event.target.value)}
                     />
                   </div>
                 </div>
@@ -59,6 +66,8 @@ const Form = () => {
                     <label
                       htmlFor="email"
                       className="leading-7 text-sm text-gray-600"
+                      value={email}
+                      onChange = {(event) => setEmail(event.target.value)}
                     >
                       Email
                     </label>
