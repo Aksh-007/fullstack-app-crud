@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 const Form = () => {
   // every time we click submit it will refresh the page so prevent refreshing the page we are using function
@@ -13,12 +14,14 @@ const Form = () => {
   console.log(userName, email);
 
   //creating a function to send the data 
-  const submitData = () =>{
+  const submitData = async () =>{
     const data = {
       name : userName,
       email : email,
-    }
-  }
+    };
+
+    const res = await axios.post("/createUser", data);
+  };
 
 
   return (
