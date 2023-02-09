@@ -51,3 +51,43 @@ export const getAllUsers = async (req, res) => {
 };
 
 
+// here we are editing the user
+export const editUser = async (req, res) => {
+    try {
+        
+        const user = await userModel.findByIdAndUpdate(req.params.id , req.body);
+        res.status(200).json({
+            success:true,
+            message:"User updated Succesfully",
+            user
+        })
+
+    } catch (error) {
+        console.log(error)
+        res.status(401).json({
+            success:false,
+            message:error.message,
+        });
+    }
+};
+
+
+
+export const deleteUser = async (req, res) => {
+    try {
+        const userId = req.params.id
+        const deleteUser = await userModel.findByIdAndDelete(userId);
+        res.status(200).json({
+            success:true,
+            message: `User Deleted Succesfully`,
+            deleteUser,
+        })
+
+    } catch (error) {
+        console.log(error);
+        res.status(401).json({
+            success:false,
+            message:error.message,
+        });
+    }
+};
