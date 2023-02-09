@@ -5,6 +5,14 @@ export const homeController = (req_, res) => {
     res.send("App is running from home controller ");
 }
 
+
+/******************************************************
+ * @POST
+ * @route http://localhost:4000/createUser
+ * @description create User Controller
+ * @parameters  name and email
+ * @returns created user
+ ******************************************************/
 export const createUser = async (req, res) => {
     try {
         const { name, email } = req.body;
@@ -31,7 +39,14 @@ export const createUser = async (req, res) => {
 
 };
 
-// here we are getting all users from database 
+
+/******************************************************
+ * @GET
+ * @route http://localhost:4000/getallusers
+ * @description get All users controller
+ * @parameters  no paramater
+ * @returns all users in database
+ ******************************************************/
 export const getAllUsers = async (req, res) => {
     try {
         const users = await userModel.find();
@@ -51,7 +66,14 @@ export const getAllUsers = async (req, res) => {
 };
 
 
-// here we are editing the user
+
+/******************************************************
+ * @EDIT
+ * @route http://localhost:4000/editUser/:id
+ * @description User edit controller
+ * @parameters  userId and edited value
+ * @returns Updated user
+ ******************************************************/
 export const editUser = async (req, res) => {
     try {
         
@@ -72,7 +94,13 @@ export const editUser = async (req, res) => {
 };
 
 
-
+/******************************************************
+ * @DELETE
+ * @route http://localhost:4000/deleteUser/:id
+ * @description User delete controller
+ * @parameters  userId 
+ * @returns deleted user
+ ******************************************************/
 export const deleteUser = async (req, res) => {
     try {
         const userId = req.params.id
