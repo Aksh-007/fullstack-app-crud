@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Form = () => {
-
   // every time we click submit it will refresh the page so prevent refreshing the page we are using function
-  const handleSubmit = (event) =>{
-      event.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  // we need some variable to store data of input field name and email so we are creating state
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  //check the username and email
+  console.log(userName, email);
+
+  //creating a function to send the data 
+  const submitData = () =>{
+    const data = {
+      name : userName,
+      email : email,
+    }
   }
+
 
   return (
     <div>
@@ -33,7 +47,7 @@ const Form = () => {
                       id="name"
                       name="name"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      value=''
+                      value=""
                     />
                   </div>
                 </div>
@@ -50,7 +64,7 @@ const Form = () => {
                       id="email"
                       name="email"
                       className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                      value=''
+                      value=""
                     />
                   </div>
                 </div>
