@@ -81,12 +81,23 @@ export const getAllUsers = async (req_, res) => {
  ******************************************************/
 export const editUser = async (req, res) => {
     try {
-        
-        const user = await userModel.findByIdAndUpdate(req.params.id , req.body);
+        const userId = req.params.id
+        const {name, email} = req.body
+
+        if(!userId){
+            throw new Error(`user Id is required`);
+        }
+
+        if (!name ) {
+            throw new Error(`Name is required`);
+        }
+        if (!email) {
+            throw new Error(`email is required`)
+        }
+        const user = await userModel.findByIdAndUpdate(userId , {name, email});
         res.status(200).json({
             success:true,
             message:"User updated Succesfully",
-            user
         })
 
     } catch (error) {
