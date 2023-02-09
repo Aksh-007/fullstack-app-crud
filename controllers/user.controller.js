@@ -47,8 +47,9 @@ export const createUser = async (req, res) => {
  * @parameters  no paramater
  * @returns all users in database
  ******************************************************/
-export const getAllUsers = async (req, res) => {
+export const getAllUsers = async (req_, res) => {
     try {
+        // if nothing pass in .find() it will give all document in database
         const users = await userModel.find();
         res.status(200).json({
             success: true,
